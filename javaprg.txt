@@ -1,0 +1,417 @@
+import java.util.Date;
+import java.util.Scanner;
+
+interface bill {
+    float calcul(int x,float y);
+    void op(int p,String na,int qty,float u);
+}
+class bills implements bill{
+    float netamt=0,price;
+    int prod_id;
+    String name;
+    public float calcul(int x,float y){
+        float net=netamt+(x*y);
+        return net;
+
+    }
+    public void op(int p,String na,int qty,float u){
+        float tot=qty*u;
+
+        System.out.print("\n"       +prod_id+"      "+name+"       "+qty+"         "+price+"     "+tot);
+    }
+
+}
+    class interfacebill{
+        public static void main(String args[]) {
+            Scanner reader = new Scanner(System.in);
+            bills b = new bills();
+            int i,n,order_no,prod_id=0,qty=0;
+            String name=" ";
+            float price=0;
+            System.out.print("Enter order number: ");
+            order_no = reader.nextInt();
+            Date date=new Date();
+            System.out.print(" Enter number of products: ");
+            n = reader.nextInt();
+            for (i = 0; i < n; i++) {
+                System.out.print("\nEnter product id: ");
+                prod_id = reader.nextInt();
+                System.out.print("Enter product name: ");
+                name = reader.next();
+                System.out.print("Enter product quantity: ");
+                qty = reader.nextInt();
+                System.out.print("Enter price: ");
+                price = reader.nextFloat();
+            }
+            System.out.print(" \n\nORDER NUMBER: " +order_no);
+            System.out.print(" \nDATE: " +date.toString());
+            System.out.print("\nPRODUCT ID    NAME    QUANTITY    UNIT PRICE    TOTAL");
+            System.out.print("\n---------------------------------------------------------");
+            for (i = 0; i < n; i++) {
+                b.op(prod_id,name,qty,price);
+                b.calcul(qty,price);
+            }
+            System.out.print("\n-----------------------------------------------------------------");
+            System.out.print("\nNET AMOUNT: "+b.netamt);
+        }
+    }
+
+==================================================
+import java.util.Scanner;
+public class cpuinfo {
+    float price;
+    cpuinfo(){
+        price=0;
+    }
+    public void cinput(){
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter the price of cpu: ");
+        price=reader.nextFloat();
+    }
+}
+class processor extends cpuinfo{
+    String manufacturer;
+    int cores;
+    processor(){
+        manufacturer=" ";
+        cores=0;
+    }
+    public void pinput(){
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter the number of cores: ");
+        cores=reader.nextInt();
+        System.out.print("Enter the manufacturer: ");
+        manufacturer=reader.next();
+    }
+}
+class RAM extends processor{
+    String manuf;
+    int memory;
+    RAM(){
+        manuf=" ";
+        memory=0;
+    }
+    public void rinput(){
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter the memory: ");
+        memory=reader.nextInt();
+        System.out.print("Enter the manufacturer: ");
+        manuf=reader.next();
+    }
+    public static void main(String[] args) {
+    RAM r=new RAM();
+    r.cinput();
+    r.pinput();
+    r.rinput();
+    System.out.println("\nDETAILS: ");
+    System.out.println("Price of CPU: "+r.price);
+    System.out.println("Number of cores: "+r.cores);
+    System.out.println("Manufacturer of processor: "+r.manufacturer);
+    System.out.println("RAM Memory: "+r.memory);
+    System.out.println("RAM Manufacturer: "+r.manuf);
+    }
+}
+
+===========================================================
+import java.util.Scanner;
+
+interface sports {
+    float smark=0;
+    void sinput();
+}
+class student {
+    Scanner reader=new Scanner(System.in);
+    int rolln;
+    float amark;
+    student(){
+        rolln=0;
+        amark=0;
+    }
+    void stinput(){
+        System.out.print("Enter roll number: ");
+        rolln=reader.nextInt();
+        System.out.print("Enter academic mark: ");
+        amark=reader.nextFloat();
+    }
+    void stoutput(){
+        System.out.println("\nRoll number: "+rolln);
+        System.out.println("Academic mark: "+amark);
+    }
+}
+
+class result extends student implements sports{
+    Scanner reader=new Scanner(System.in);
+    float tot;
+    public void sinput(){
+        System.out.print("Enter sports mark: ");
+        float smark = reader.nextFloat();
+    }
+    void soutput() {
+
+        System.out.println("Sports mark: "+smark);
+        tot=amark+smark;
+        System.out.println("Total mark: "+tot);
+    }
+}
+class studinheritence{
+    public static void main(String[] args){
+        result r=new result();
+        r.stinput();
+        r.sinput();
+        r.stoutput();
+        r.soutput();
+    }
+}
+
+===============================================================
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        if(num%2==0)
+        System.out.print("Even number"); 
+        else
+        System.out.print(" Odd number");
+    }
+}
+================================================================
+
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        System.out.print("The square root of "+num+" is "+Math.sqrt(num)); 
+    }
+}
+wap to find the largest of 3 nos
+check given num is palindrome or not
+factorial of a num
+number name of given number 
+wap to display list of nos in asc order using arrays
+==========================================================
+
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        int temp=num;
+        int rev=0;
+        while(num!=0)
+        {
+        int a=num%10;
+        rev=rev*10+a;
+        num=num/10;
+        }
+        System.out.println("Reversed number is "+rev);
+        if(temp==rev)
+            System.out.println("The number "+temp+"  is palindrome");
+        else
+            System.out.println("The number "+temp+"  is not a palindrome");
+    }
+}
+
+ 
+====================================================================
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter first number:");
+        int num1=reader.nextInt();
+        System.out.print("Enter second number:");
+        int num2=reader.nextInt();
+        System.out.print("Enter third number:");
+        int num3=reader.nextInt();
+        if(num1>num2&&num1>num3)
+        System.out.print("The number "+num1+" is bigger"); 
+        else if(num2>num1&&num2>num3)
+        System.out.print("The number "+num2+" is bigger");
+        else
+        System.out.print("The number "+num3+" is bigger");
+    }
+}
+=============================================
+
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        int i,fact=1;  
+        for(i=1;i<=num;i++){    
+        fact=fact*i;    
+        }    
+    System.out.println("Factorial of "+num+" is: "+fact);    
+    }
+}
+=============================================================
+
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        String res=(num>0) ? "Positive":"Negative";
+         System.out.println("The number "+num+" is a "+res+" number");   
+    }
+}
+===============================================================
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a numberbetween 0 and 9:");
+        int num=reader.nextInt();
+        switch(num)
+        {
+            case 1:
+            System.out.println("The number name of "+num+"  is one");
+            break;
+            case 2:
+            System.out.println("The number name of "+num+"  is two");
+            break;
+            case 3:
+            System.out.println("The number name of "+num+"  is three");
+            break;
+            case 4:
+            System.out.println("The number name of "+num+"  is four");
+            break;
+            case 5:
+            System.out.println("The number name of "+num+"  is five");
+            break;
+            case 6:
+            System.out.println("The number name of "+num+"  is six");
+            break;
+            case 7:
+            System.out.println("The number name of "+num+"  is seven");
+            break;
+            case 8:
+            System.out.println("The number name of "+num+"  is eight");
+            break;
+            case 9:
+            System.out.println("The number name of "+num+"  is nine");
+            break;
+            default:
+            System.out.println("Invalid entry");
+        } 
+    }
+}
+
+ ===========================================================
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num=reader.nextInt();
+        System.out.println("Prime numbers are: ");
+        for(int i=1;i<=num;i++)
+        {
+            int p=0;
+            for(int j=1;j<=i;j++)
+            {
+                if(i%j==0)
+                    p++;
+            }
+            if(p==2)
+                    System.out.print(" "+i);
+ 
+        }
+    }
+}
+=========================================================
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        int n;
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter number of elements:");
+         n=reader.nextInt();
+        int num[]=new int[n];
+        System.out.print("Enter array elements:");
+        for(int i=0;i<n;i++)
+        {
+            num[i]=reader.nextInt();
+        }
+        
+        int max=num[0];
+        for(int i=0;i<n;i++)
+        {
+            if(max<num[i])
+            {
+            max=num[i];
+            }
+        }
+         System.out.print("Largest value in array is "+max);
+    }
+}
+======================================================
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        int n;
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter number of elements:");
+         n=reader.nextInt();
+        int num[]=new int[n];
+        System.out.print("Enter array elements:");
+        for(int i=0;i<n;i++)
+        {
+            num[i]=reader.nextInt();
+        }
+        
+        int sum=0,avg=0;
+        for(int i=0;i<n;i++)
+        {
+            sum=sum+num[i];
+            
+        }
+        avg=sum/n;
+         System.out.println("Sum of elements : "+sum);
+         System.out.println("Average of elements : "+avg);
+    }
+}
+============================================================
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        int n;
+        Scanner reader=new Scanner(System.in);
+        System.out.print("Enter number of elements:");
+         n=reader.nextInt();
+        int num[]=new int[n];
+        System.out.print("Enter array elements:");
+        for(int i=0;i<n;i++)
+        {
+            num[i]=reader.nextInt();
+        }
+        
+        int max=num[0];
+        int asc[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            if(max<num[i])
+            {
+            asc[i]=max;
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+         System.out.print("Array in ascending order :"+asc[i]);
+        }
+    }
+}
