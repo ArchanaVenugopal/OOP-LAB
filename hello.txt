@@ -1,0 +1,3 @@
+Hai Welcome to
+Input.txt file
+Copying Done
